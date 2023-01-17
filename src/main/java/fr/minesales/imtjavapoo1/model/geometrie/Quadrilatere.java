@@ -1,12 +1,16 @@
 package fr.minesales.imtjavapoo1.model.geometrie;
 
 public class Quadrilatere {
-private Point p1;
-    private Point p2;
-    private Point p3;
-    private Point p4;
+    protected Point p1;
+    protected Point p2;
+    protected Point p3;
+    protected Point p4;
 
-    public Quadrilatere(Point p1, Point p2, Point p3, Point p4) {
+    public Quadrilatere() {
+        super();
+    }
+
+    public void updateFigure(Point p1, Point p2, Point p3, Point p4){
         this.p1 = p1;
         this.p2 = p2;
         this.p3 = p3;
