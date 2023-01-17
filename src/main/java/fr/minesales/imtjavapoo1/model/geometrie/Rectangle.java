@@ -1,15 +1,17 @@
 package fr.minesales.imtjavapoo1.model.geometrie;
 
-public class Rectangle extends Quadrilatere{
-    public Rectangle( Point p1, Point p4){
+public class Rectangle extends Parallelogramme{
+    public Rectangle( Point p1, Point p3){
         super();
         this.p1 = p1;
-        double middleX = (p1.getX() + p4.getX()) / 2;
-        double middleY = (p1.getX() + p4.getX()) / 2;
-        double distance = Math.sqrt(Math.pow(p4.getX() - p1.getX(),2) + Math.pow(p4.getY() - p1.getY(),2));
+        this.p3 = p3;
+
+        double middleX = (p1.getX() + p3.getX()) / 2;
+        double middleY = (p1.getX() + p3.getX()) / 2;
+        double distance = Math.sqrt(Math.pow(p3.getX() - p1.getX(),2) + Math.pow(p3.getY() - p1.getY(),2));
         this.p2 = new Point(middleX + distance/2, middleY +distance/2);
-        this.p3 = new Point(middleX +distance/2, middleY + distance/2);
-        this.p4 = p4;
+        this.p4 = new Point(middleX +distance/2, middleY + distance/2);
+
     }
 
     public Rectangle( Point p1, double longX, double longY){
@@ -33,10 +35,7 @@ public class Rectangle extends Quadrilatere{
         if(Math.abs(p1.getY() - p2.getY()) != Math.abs(p3.getY() - p4.getY()))
             throw new IllegalArgumentException("Ces points ne permettent pas de faire un rectangle");
 
-        this.p1 = p1;
-        this.p2 = p2;
-        this.p3 = p3;
-        this.p4 = p4;
+        super.updateFigure(p1, p2, p3, p4);
     }
 
     @Override

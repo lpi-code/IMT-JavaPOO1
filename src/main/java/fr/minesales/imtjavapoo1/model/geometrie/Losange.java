@@ -1,6 +1,6 @@
 package fr.minesales.imtjavapoo1.model.geometrie;
 
-public class Losange extends Quadrilatere{
+public class Losange extends Parallelogramme{
 
 
     public Losange( Point p1, double longX, double longY){
