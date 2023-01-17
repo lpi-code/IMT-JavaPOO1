@@ -26,3 +26,12 @@ public class Parallelogramme extends Trapeze {
     }
 }
 
+
+    @Override
+    public void propriete() {
+        super.propriete();
+        System.out.println("Je suis un parallélogramme\nJe possède 4 côtés parallèles deux à deux");
+    }
+
+}
+
