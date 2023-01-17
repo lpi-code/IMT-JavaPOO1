@@ -13,11 +13,18 @@ private Point p1;
         this.p4 = p4;
     }
 
+    public Quadrilatere() {
+        this.p1 = new Point();
+        this.p2 = new Point();
+        this.p3 = new Point();
+        this.p4 = new Point();
+    }
+
     public Point getP1() {
         return p1;
     }
 
-    public void setP1(Point p1) {
+    protected void setP1(Point p1) {
         this.p1 = p1;
     }
 
@@ -25,7 +32,7 @@ private Point p1;
         return p2;
     }
 
-    public void setP2(Point p2) {
+    protected void setP2(Point p2) {
         this.p2 = p2;
     }
 
@@ -33,7 +40,7 @@ private Point p1;
         return p3;
     }
 
-    public void setP3(Point p3) {
+    protected void setP3(Point p3) {
         this.p3 = p3;
     }
 
@@ -41,7 +48,7 @@ private Point p1;
         return p4;
     }
 
-    public void setP4(Point p4) {
+    protected void setP4(Point p4) {
         this.p4 = p4;
     }
 
