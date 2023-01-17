@@ -5,6 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bc803b4-1743-4733-99c5-139aac9fb2d0" name="Changes" comment="struct">
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/minesales/imtjavapoo1/model/geometrie/Carre.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/minesales/imtjavapoo1/model/geometrie/CerfVolant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/minesales/imtjavapoo1/model/geometrie/Losange.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/minesales/imtjavapoo1/model/geometrie/Parallelogramme.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/minesales/imtjavapoo1/model/geometrie/Rectangle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/minesales/imtjavapoo1/model/geometrie/Trapeze.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/minesales/imtjavapoo1/model/geometrie/Quadrilatere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/minesales/imtjavapoo1/model/geometrie/Quadrilatere.java" afterDir="false" />
     </list>
@@ -82,7 +88,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673953993925</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="struct">
+      <created>1673960182029</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1673960182029</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

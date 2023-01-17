@@ -58,7 +58,7 @@ private Point p1;
     }
 
     public String coordonnees() {
-        return "Coordonnées des sommets : (" + x1 + ", " + y1 + "), (" + x2 + ", " + y2 + "), (" + x3 + ", " + y3 + "), (" + x4 + ", " + y4 + ")";
+        return "P1" + this.p1.toString() + "P2" + this.p2.toString() + "P3" + this.p3.toString() + "P4" + this.p4.toString();
     }
 
     @Override
@@ -71,13 +71,7 @@ private Point p1;
                 " dont " +
                 this.coordonnees() +
                 "\n de points " +
-                this.p1.toString() +
-                ", " +
-                this.p2.toString() +
-                ", " +
-                this.p3.toString() +
-                ", " +
-                this.p4.toString();
+                this.coordonnees();
     }
 
     public void affiche() {
