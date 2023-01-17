@@ -15,6 +15,14 @@ public class Losange extends Quadrilatere{
         super();
     }
 
+    public Losange(Point p1, Point p3){
+        super();
+        this.p1 = p1;
+        this.p2 = new Point(p1.getX() + p3.getX() - p1.getX(), p1.getY());
+        this.p3 = p3;
+        this.p4 = new Point(p1.getX() + p3.getX() - p1.getX(), p1.getY() + p3.getY() - p1.getY());
+    }
+
     @Override
     public void updateFigure(Point p1, Point p2, Point p3, Point p4){
 
@@ -34,5 +42,14 @@ public class Losange extends Quadrilatere{
     @Override
     public String type() {
         return "Rectangle";
+    }
+
+    public static void main(String[] args) {
+        Point p1 = new Point(0,0);
+        Point p2 = new Point(0,1);
+        Point p3 = new Point(1,0);
+        Point p4 = new Point(1,1);
+        Losange r = new Losange(p1,p4);
+        r.propriete();
     }
 }

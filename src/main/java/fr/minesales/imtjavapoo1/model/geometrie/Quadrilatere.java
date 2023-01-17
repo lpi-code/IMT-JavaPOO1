@@ -10,6 +10,13 @@ public class Quadrilatere {
         super();
     }
 
+    public Quadrilatere(Point p1, Point p2, Point p3, Point p4) {
+        this.p1 = p1;
+        this.p2 = p2;
+        this.p3 = p3;
+        this.p4 = p4;
+    }
+
     public void updateFigure(Point p1, Point p2, Point p3, Point p4){
         this.p1 = p1;
         this.p2 = p2;
@@ -84,6 +91,13 @@ public class Quadrilatere {
 
     public void propriete() {
         System.out.println("Je suis un quadrilatère\nJe possède 4 côtés et 4 points");
+    }
+
+    public static void main(String[] args) {
+        Quadrilatere q = new Quadrilatere();
+        q.updateFigure(new Point(0, 0), new Point(0, 1), new Point(1, 1), new Point(1, 0));
+        q.affiche();
+        q.propriete();
     }
 
 

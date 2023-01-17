@@ -43,4 +43,20 @@ public class Rectangle extends Quadrilatere{
     public String type() {
         return "Rectangle";
     }
+
+    @Override
+    public void propriete() {
+        super.propriete();
+        System.out.println("Je suis un rectangle");
+    }
+
+
+    public static void main(String[] args) {
+        Point p1 = new Point(0,0);
+        Point p2 = new Point(0,1);
+        Point p3 = new Point(1,0);
+        Point p4 = new Point(1,1);
+        Rectangle r = new Rectangle(p1,p4);
+        r.propriete();
+    }
 }
