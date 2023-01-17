@@ -17,4 +17,10 @@ public class Trapeze extends Quadrilatere {
     public String type() {
         return "Trapeze";
     }
+
+    @Override
+    public void propriete() {
+        super.propriete();
+        System.out.println("Je aussi suis un trapeze\nJe possède 2 côtés parallèles");
+    }
 }

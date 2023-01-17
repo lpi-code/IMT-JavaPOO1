@@ -87,6 +87,9 @@ public class Quadrilatere {
         System.out.println(this.toString());
     }
 
+    public void propriete() {
+        System.out.println("Je suis un quadrilatère\nJe possède 4 côtés et 4 points");
+    }
 
 
 }
