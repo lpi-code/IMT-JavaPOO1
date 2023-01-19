@@ -28,5 +28,4 @@ public class Carre extends Rectangle {
         System.out.println("Je suis aussi un carré\nJe possède 4 côtés de même longueur");
     }
 
-    public
 }
