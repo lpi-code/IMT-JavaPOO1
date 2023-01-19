@@ -33,10 +33,7 @@ public class Losange extends Parallelogramme{
         if(!( dist12 == dist13 && dist13 == dist24 && dist24 == dist34))
             throw new IllegalArgumentException("Ces points ne permettent pas de faire un losange");
 
-        this.p1 = p1;
-        this.p2 = p2;
-        this.p3 = p3;
-        this.p4 = p4;
+        super.updateFigure(p1, p2, p3, p4);
     }
 
     @Override
@@ -50,6 +47,15 @@ public class Losange extends Parallelogramme{
         Point p3 = new Point(1,0);
         Point p4 = new Point(1,1);
         Losange r = new Losange(p1,p4);
+
+        Point p5 = new Point(10,100); // Obviously wont work
+        try{
+            r.updateFigure(p1, p2, p3, p5);
+            throw new AssertionError("Should have thrown an exception");
+        } catch (IllegalArgumentException e ){
+            System.out.println("An error as been caught and it is the expected behavior");
+        }
+        r.updateFigure(p1, p2, p3, p4);
         r.propriete();
     }
 }
