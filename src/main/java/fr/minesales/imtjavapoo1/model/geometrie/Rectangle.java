@@ -6,12 +6,40 @@ public class Rectangle extends Parallelogramme{
         this.p1 = p1;
         this.p3 = p3;
 
-        double middleX = (p1.getX() + p3.getX()) / 2;
-        double middleY = (p1.getX() + p3.getX()) / 2;
-        double distance = Math.sqrt(Math.pow(p3.getX() - p1.getX(),2) + Math.pow(p3.getY() - p1.getY(),2));
-        this.p2 = new Point(middleX + distance/2, middleY +distance/2);
-        this.p4 = new Point(middleX +distance/2, middleY + distance/2);
+        //Get the equation of the line between p1 and p3
+        double a = (p3.getY() - p1.getY()) / (p3.getX() - p1.getX());
+        double b = p1.getY() - a * p1.getX();
 
+        //Get the equation from p1 that is at 45° of the line
+        double a2 = -1 / a;
+        double b2 = p1.getY() - a2 * p1.getX();
+
+        //Get the equation from p3 that is at -45° of the line
+        double a3 = -1 / a;
+        double b3 = p3.getY() - a3 * p3.getX();
+
+        //Get the intersection of the two lines
+        double x2 = (b3 - b2) / (a2 - a3);
+        double y2 = a2 * x2 + b2;
+
+
+
+        //Get the equation from p1 that is at -45° of the line
+        double a4 = -1 / a;
+        double b4 = p1.getY() - a4 * p1.getX();
+
+
+        //Get the equation from p3 that is at 45° of the line
+        double a5 = -1 / a;
+        double b5 = p3.getY() - a5 * p3.getX();
+
+        //Get the intersection of the two lines
+        double x4 = (b5 - b4) / (a4 - a5);
+        double y4 = a4 * x4 + b4;
+
+        //Create the points
+        this.p2 = new Point(x2, y2);
+        this.p4 = new Point(x4, y4);
     }
 
     public Rectangle( Point p1, double longX, double longY){
