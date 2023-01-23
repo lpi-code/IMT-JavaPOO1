@@ -1,20 +1,20 @@
 package fr.minesales.imtjavapoo1.model.geometrie;
 
 public class Quadrilatere {
-    protected Point p1;
-    protected Point p2;
-    protected Point p3;
-    protected Point p4;
+    protected InterPoint p1;
+    protected InterPoint p2;
+    protected InterPoint p3;
+    protected InterPoint p4;
 
 
-    public Quadrilatere(Point p1, Point p2, Point p3, Point p4) {
+    public Quadrilatere(InterPoint p1, InterPoint p2, InterPoint p3, InterPoint p4) {
         this.p1 = p1;
         this.p2 = p2;
         this.p3 = p3;
         this.p4 = p4;
     }
 
-    public void updateFigure(Point p1, Point p2, Point p3, Point p4){
+    public void updateFigure(InterPoint p1, InterPoint p2, InterPoint p3, InterPoint p4){
         this.p1 = p1;
         this.p2 = p2;
         this.p3 = p3;
@@ -29,35 +29,35 @@ public class Quadrilatere {
         this.p4 = new Point();
     }
 
-    public Point getP1() {
+    public InterPoint getP1() {
         return p1;
     }
 
-    protected void setP1(Point p1) {
+    protected void setP1(InterPoint p1) {
         this.p1 = p1;
     }
 
-    public Point getP2() {
+    public InterPoint getP2() {
         return p2;
     }
 
-    protected void setP2(Point p2) {
+    protected void setP2(InterPoint p2) {
         this.p2 = p2;
     }
 
-    public Point getP3() {
+    public InterPoint getP3() {
         return p3;
     }
 
-    protected void setP3(Point p3) {
+    protected void setP3(InterPoint p3) {
         this.p3 = p3;
     }
 
-    public Point getP4() {
+    public InterPoint getP4() {
         return p4;
     }
 
-    protected void setP4(Point p4) {
+    protected void setP4(InterPoint p4) {
         this.p4 = p4;
     }
 
@@ -74,7 +74,7 @@ public class Quadrilatere {
     }
 
     public String coordonnees() {
-        return "P1 " + this.p1.toString() + " P2 " + this.p2.toString() + " P3 " + this.p3.toString() + " P4 " + this.p4.toString();
+        return "P1" + this.p1.toString() + "P2" + this.p2.toString() + "P3" + this.p3.toString() + "P4" + this.p4.toString();
     }
 
     @Override
@@ -84,7 +84,9 @@ public class Quadrilatere {
                 this.perimetre() +
                 " et de surface " +
                 this.surface() +
-                "\nDe points " +
+                " dont " +
+                this.coordonnees() +
+                "\n de InterPoints " +
                 this.coordonnees();
     }
 
@@ -93,8 +95,8 @@ public class Quadrilatere {
     }
 
     public void propriete() {
-        System.out.println("Je suis un quadrilatère\nJe possède 4 côtés et 4 points");
-        System.out.println("Mes points this sont " + this.p1.toString() + " " + this.p2.toString() + " " + this.p3.toString() + " " + this.p4.toString());
+        System.out.println("Je suis un quadrilatère\nJe possède 4 côtés et 4 InterPoints");
+        System.out.println("Mes InterPoints this sont " + this.p1.toString() + " " + this.p2.toString() + " " + this.p3.toString() + " " + this.p4.toString());
     }
 
     public static void main(String[] args) {

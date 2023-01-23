@@ -1,6 +1,6 @@
 package fr.minesales.imtjavapoo1.model.geometrie;
 
-public class Point {
+public class Point implements InterPoint{
     private double x;
     private double y;
 
@@ -34,7 +34,7 @@ public class Point {
         this.y = y;
     }
 
-    public double distance(Point p) {
+    public double distance(InterPoint p) {
         return Math.sqrt(Math.pow(p.getX() - this.x, 2) + Math.pow(p.getY() - this.y, 2));
     }
 

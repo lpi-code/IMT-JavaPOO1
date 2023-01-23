@@ -7,18 +7,18 @@ public class Trapeze extends Quadrilatere {
         super();
     }
 
-    public Trapeze(Point p1, Point p2, Point p3, Point point) {
+    public Trapeze(InterPoint p1, InterPoint p2, InterPoint p3, InterPoint InterPoint) {
         super();
-        this.updateFigure(p1, p2, p3, point);
+        this.updateFigure(p1, p2, p3, InterPoint);
     }
 
 
     @Override
-    public void updateFigure(Point p1, Point p2, Point p3, Point p4)
+    public void updateFigure(InterPoint p1, InterPoint p2, InterPoint p3, InterPoint p4)
     {
-        //Check if those points make a trapeze
+        //Check if those InterPoints make a trapeze
         if (!Trapeze.isTrapeze(p1, p2, p3, p4)) {
-            throw new IllegalArgumentException("Ces points ne forment pas un trapèze");
+            throw new IllegalArgumentException("Ces InterPoints ne forment pas un trapèze");
         }
         super.updateFigure(p1, p2, p3, p4);
     }
@@ -28,7 +28,7 @@ public class Trapeze extends Quadrilatere {
         return "Trapeze";
     }
 
-    public static boolean isTrapeze(Point p1, Point p2, Point p3, Point p4) {
+    public static boolean isTrapeze(InterPoint p1, InterPoint p2, InterPoint p3, InterPoint p4) {
         // Calculer les vecteurs formés par les côtés
         double v1x = p2.getX() - p1.getX();
         double v1y = p2.getY() - p1.getY();
@@ -61,11 +61,11 @@ public class Trapeze extends Quadrilatere {
     }
 
     public static void main(String[] args) {
-        Point p1 = new Point(0,0);
-        Point p2 = new Point(0,1);
-        Point p4 = new Point(1,0);
-        Point p3 = new Point(1,1);
-        Point p5 = new Point(100, 100);
+        InterPoint p1 = new Point(0,0);
+        InterPoint p2 = new Point(0,1);
+        InterPoint p3 = new Point(1,1);
+        InterPoint p4 = new Point(1,0);
+        InterPoint p5 = new Point(100, 100);
         Trapeze r = new Trapeze();
         try{
             r.updateFigure(p1, p2, p3, p5);
