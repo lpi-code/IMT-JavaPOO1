@@ -8,38 +8,42 @@ public class Rectangle extends Parallelogramme{
 
         //Get the equation of the line between p1 and p3
         double a = (p3.getY() - p1.getY()) / (p3.getX() - p1.getX());
-        double b = p1.getY() - a * p1.getX();
+        double b = p1.getY();
+        double b2 = p3.getY();
 
-        //Get the equation from p1 that is at 45° of the line
-        double a2 = -1 / a;
-        double b2 = p1.getY() - a2 * p1.getX();
-
-        //Get the equation from p3 that is at -45° of the line
-        double a3 = -1 / a;
-        double b3 = p3.getY() - a3 * p3.getX();
-
-        //Get the intersection of the two lines
-        double x2 = (b3 - b2) / (a2 - a3);
-        double y2 = a2 * x2 + b2;
+        System.out.println("a = " + a + " b = " + b + " b2 = " + b2);
 
 
+        double r1 = Math.sqrt(a*a + 1);
+        double theta1 = Math.atan(a) + Math.toRadians(-45);
+        double a_new1 = Math.tan(theta1);
+        double b_new1 = b;
 
-        //Get the equation from p1 that is at -45° of the line
-        double a4 = -1 / a;
-        double b4 = p1.getY() - a4 * p1.getX();
+        System.out.println("a_new1 = " + a_new1 + " b_new1 = " + b_new1);
 
+        double r2 = Math.sqrt(a*a + 1);
+        double theta2 = Math.atan(a) + Math.toRadians(45);
+        double a_new2 = Math.tan(theta2);
+        double b_new2 = b2;
 
-        //Get the equation from p3 that is at 45° of the line
-        double a5 = -1 / a;
-        double b5 = p3.getY() - a5 * p3.getX();
+        double r3 = Math.sqrt(a*a + 1);
+        double theta3 = Math.atan(a) + Math.toRadians(45);
+        double a_new3 = Math.tan(theta3);
+        double b_new3 = b;
 
-        //Get the intersection of the two lines
-        double x4 = (b5 - b4) / (a4 - a5);
-        double y4 = a4 * x4 + b4;
+        double r4 = Math.sqrt(a*a + 1);
+        double theta4 = Math.atan(a) + Math.toRadians(-45);
+        double a_new4 = Math.tan(theta4);
+        double b_new4 = b2;
 
-        //Create the points
-        this.p2 = new Point(x2, y2);
-        this.p4 = new Point(x4, y4);
+        double x2 = (b_new2 - b_new1) / (a_new1 - a_new2);
+        double y2 = a_new1 * x2 + b_new1;
+
+        double x4 = (b_new4 - b_new3) / (a_new3 - a_new4);
+        double y4 = a_new3 * x4 + b_new3;
+
+        this.p2 = new Point(Math.round(x2), Math.round(y2));
+        this.p4 = new Point(Math.round(x4), Math.round(y4));
     }
 
     public Rectangle( Point p1, double longX, double longY){
@@ -84,13 +88,17 @@ public class Rectangle extends Parallelogramme{
         System.out.println("Je suis un rectangle");
     }
 
+    @Override
+    public void affiche() {
+        super.affiche();
+    }
+
 
     public static void main(String[] args) {
-        Point p1 = new Point(0,0);
-        Point p2 = new Point(0,1);
-        Point p3 = new Point(1,0);
-        Point p4 = new Point(1,1);
-        Rectangle r = new Rectangle(p1,p4);
-        r.propriete();
+        Point p1 = new Point(1,1);
+        Point p3 = new Point(5,5);
+        Rectangle r = new Rectangle(p1, p3);
+
+        r.affiche();
     }
 }

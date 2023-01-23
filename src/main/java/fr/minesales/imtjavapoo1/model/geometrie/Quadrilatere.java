@@ -74,7 +74,7 @@ public class Quadrilatere {
     }
 
     public String coordonnees() {
-        return "P1" + this.p1.toString() + "P2" + this.p2.toString() + "P3" + this.p3.toString() + "P4" + this.p4.toString();
+        return "P1 " + this.p1.toString() + " P2 " + this.p2.toString() + " P3 " + this.p3.toString() + " P4 " + this.p4.toString();
     }
 
     @Override
@@ -84,9 +84,7 @@ public class Quadrilatere {
                 this.perimetre() +
                 " et de surface " +
                 this.surface() +
-                " dont " +
-                this.coordonnees() +
-                "\n de points " +
+                "\nDe points " +
                 this.coordonnees();
     }
 
