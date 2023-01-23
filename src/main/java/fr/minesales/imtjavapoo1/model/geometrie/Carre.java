@@ -6,6 +6,11 @@ public class Carre extends Rectangle {
         super();
     }
 
+    public Carre(Point p1, Point p2, Point p3, Point p4) {
+        super();
+        this.updateFigure(p1, p2, p3, p4);
+    }
+
     public void updateFigure(Point p1, Point p2, Point p3, Point p4){
 
         double dist12 = Math.sqrt(Math.pow(p2.getX() - p1.getX(),2) + Math.pow(p2.getY() - p1.getY(),2));
