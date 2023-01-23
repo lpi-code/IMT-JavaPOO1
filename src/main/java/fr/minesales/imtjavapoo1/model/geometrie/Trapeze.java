@@ -63,8 +63,8 @@ public class Trapeze extends Quadrilatere {
     public static void main(String[] args) {
         Point p1 = new Point(0,0);
         Point p2 = new Point(0,1);
-        Point p3 = new Point(1,0);
-        Point p4 = new Point(1,1);
+        Point p4 = new Point(1,0);
+        Point p3 = new Point(1,1);
         Point p5 = new Point(100, 100);
         Trapeze r = new Trapeze();
         try{

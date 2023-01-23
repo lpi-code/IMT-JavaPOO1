@@ -1,8 +1,6 @@
 package fr.minesales.imtjavapoo1.model.geometrie;
 
-import java.text.DecimalFormat;
 
-import static fr.minesales.imtjavapoo1.model.geometrie.Point.angle;
 import static java.lang.Math.pow;
 
 public class CerfVolant extends Quadrilatere {
