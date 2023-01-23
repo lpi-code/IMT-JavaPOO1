@@ -3,7 +3,7 @@ package fr.minesales.imtjavapoo1;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HelloController {
+public class DrawGeometryAppController {
     @FXML
     private Label welcomeText;
 

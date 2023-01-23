@@ -24,7 +24,7 @@ public class CollectionQuadrilatere {
         this.quadCollection.add(
                 new Quadrilatere(new Point(0,0), new Point(0,4), new Point(4,4), new Point(4,0)));
         this.quadCollection.add(
-                new Parallelogramme(new Point(1,5), new Point(6,5), new Point(6,10)));
+                new Parallelogramme(new Point(1,5), new Point(6,5), new Point(6,10), new Point(1,10)));
         this.quadCollection.add(
                 new Rectangle(new Point(2,2), new Point(2,10), new Point(10,10), new Point(10,2)));
         this.quadCollection.add(
