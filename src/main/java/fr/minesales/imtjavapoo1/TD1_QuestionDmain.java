@@ -10,7 +10,7 @@ public class TD1_QuestionDmain {
         System.out.println("\n");
         // parallélogramme
         System.out.println("Création d'un parallélogramme");
-        Parallelogramme p1 = new Parallelogramme(new Point(0, 0), new Point(1, 0), new Point(1, 1));
+        Parallelogramme p1 = new Parallelogramme(new Point(0, 0), new Point(1, 0), new Point(1, 1), new Point(0,1));
         System.out.println("Affichage des propriétés du parallélogramme");
         p1.propriete();
         System.out.println("\n");

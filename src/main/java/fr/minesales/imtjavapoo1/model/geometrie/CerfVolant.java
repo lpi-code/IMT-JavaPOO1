@@ -9,7 +9,7 @@ public class CerfVolant extends Quadrilatere {
         return "CerfVolant";
     }
 
-    public CerfVolant(Point p1, Point p2, Point p3, Point p4) {
+    public CerfVolant(InterPoint p1, InterPoint p2, InterPoint p3, InterPoint p4) {
         super();
         this.updateFigure(p1, p2, p3, p4);
     }
@@ -26,7 +26,7 @@ public class CerfVolant extends Quadrilatere {
 
     }
 
-    public void updateFigure(Point p1, Point p2, Point p3, Point p4) throws IllegalArgumentException {
+    public void updateFigure(InterPoint p1, InterPoint p2, InterPoint p3, InterPoint p4) throws IllegalArgumentException {
         double d1 = p1.distance(p2);
         double d2 = p2.distance(p3);
         double d3 = p3.distance(p4);
@@ -38,7 +38,7 @@ public class CerfVolant extends Quadrilatere {
             this.p3 = p3;
             this.p4 = p4;
         } else {
-            throw new IllegalArgumentException("Points do not form a kite");
+            throw new IllegalArgumentException("InterPoints do not form a kite");
         }
 
         // Check if diagonals cross forming a right angle
@@ -52,16 +52,16 @@ public class CerfVolant extends Quadrilatere {
 
         // Check if lines are parallel
         if (a1 == a2) {
-            throw new IllegalArgumentException("Points do not form a kite");
+            throw new IllegalArgumentException("InterPoints do not form a kite");
         }
 
-        // Get intersection point
+        // Get intersection InterPoint
         double x = (b2 - b1) / (a1 - a2);
         double y = a1 * x + b1;
-        Point p = new Point(x, y);
+        InterPoint p = new Point(x, y);
         // Pythagore and rounding to three decimals
         if (Math.round(pow(p1.distance(p2),2) * 1000) != Math.round((pow(p.distance(p1),2) + pow(p.distance(p2),2))*1000)){
-            throw new IllegalArgumentException("Points do not form a kite");
+            throw new IllegalArgumentException("InterPoints do not form a kite");
         }
         super.updateFigure(p1, p2, p3, p4);
 
@@ -69,22 +69,22 @@ public class CerfVolant extends Quadrilatere {
 
 
     public static void main(String[] args) {
-        Point p1 = new Point(-5,7);
-        Point p2 = new Point(2,6);
-        Point p3 = new Point(5,-3);
-        Point p4 = new Point(-4,0);
+        InterPoint p1 = new Point(-5,7);
+        InterPoint p2 = new Point(2,6);
+        InterPoint p3 = new Point(5,-3);
+        InterPoint p4 = new Point(-4,0);
         CerfVolant r = new CerfVolant(p1,p2,p3,p4);
 
-        Point p5 = new Point(0,0);
-        Point p6 = new Point(0,1);
-        Point p7 = new Point(10,0);
-        Point p8 = new Point(1,2);
+        InterPoint p5 = new Point(0,0);
+        InterPoint p6 = new Point(0,1);
+        InterPoint p7 = new Point(10,0);
+        InterPoint p8 = new Point(1,2);
         // assert exception
         try {
             r.updateFigure(p5,p6,p7,p8);
             throw new AssertionError("Should have thrown an exception");
         } catch (IllegalArgumentException e) {
-            System.out.println("Ces points ne permettent pas de faire un cerf-volant... Et c'est bien normal !");
+            System.out.println("Ces InterPoints ne permettent pas de faire un cerf-volant... Et c'est bien normal !");
         }
         // Now this should work
         r.updateFigure(p1,p2,p3,p4);

@@ -1,7 +1,7 @@
 package fr.minesales.imtjavapoo1.model.geometrie;
 
 public class Rectangle extends Parallelogramme{
-    public Rectangle( Point p1, Point p3){
+    public Rectangle( InterPoint p1, InterPoint p3){
         super();
         this.p1 = p1;
         this.p3 = p3;
@@ -37,12 +37,12 @@ public class Rectangle extends Parallelogramme{
         double x4 = (b5 - b4) / (a4 - a5);
         double y4 = a4 * x4 + b4;
 
-        //Create the points
+        //Create the InterPoints
         this.p2 = new Point(x2, y2);
         this.p4 = new Point(x4, y4);
     }
 
-    public Rectangle( Point p1, double longX, double longY){
+    public Rectangle( InterPoint p1, double longX, double longY){
         super();
         this.p1 = p1;
         this.p2 = new Point(p1.getX() + longX, p1.getY());
@@ -54,12 +54,12 @@ public class Rectangle extends Parallelogramme{
         super();
     }
 
-    public Rectangle(Point p1, Point p2, Point p3, Point p4) {
+    public Rectangle(InterPoint p1, InterPoint p2, InterPoint p3, InterPoint p4) {
         super();
         this.updateFigure(p1, p2, p3, p4);
     }
     @Override
-    public void updateFigure(Point p1, Point p2, Point p3, Point p4){
+    public void updateFigure(InterPoint p1, InterPoint p2, InterPoint p3, InterPoint p4){
 
         double dist12 = Math.sqrt(Math.pow(p2.getX() - p1.getX(),2) + Math.pow(p2.getY() - p1.getY(),2));
         double dist34 = Math.sqrt(Math.pow(p4.getX() - p3.getX(),2) + Math.pow(p4.getY() - p3.getY(),2));
@@ -69,10 +69,10 @@ public class Rectangle extends Parallelogramme{
         double dist24 = Math.sqrt(Math.pow(p4.getX() - p2.getX(),2) + Math.pow(p4.getY() - p2.getY(),2));
 
         if(Math.sqrt(Math.pow(dist12, 2) + Math.pow(dist41, 2)) != dist13)
-            throw new IllegalArgumentException("Ces points ne permettent pas de faire un rectangle");
+            throw new IllegalArgumentException("Ces InterPoints ne permettent pas de faire un rectangle");
 
         if(Math.sqrt(Math.pow(dist41, 2) + Math.pow(dist34, 2)) != dist24)
-            throw new IllegalArgumentException("Ces points ne permettent pas de faire un rectangle");
+            throw new IllegalArgumentException("Ces InterPoints ne permettent pas de faire un rectangle");
 
         super.updateFigure(p1, p2, p3, p4);
     }
@@ -90,10 +90,10 @@ public class Rectangle extends Parallelogramme{
 
 
     public static void main(String[] args) {
-        Point p1 = new Point(0,0);
-        Point p2 = new Point(0,1);
-        Point p3 = new Point(1,0);
-        Point p4 = new Point(1,1);
+        InterPoint p1 = new Point(0,0);
+        InterPoint p2 = new Point(0,1);
+        InterPoint p3 = new Point(1,0);
+        InterPoint p4 = new Point(1,1);
         Rectangle r = new Rectangle(p1,p4);
         r.propriete();
     }

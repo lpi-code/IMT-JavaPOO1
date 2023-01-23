@@ -10,12 +10,13 @@ public class Parallelogramme extends Trapeze {
         return "Parallélogramme";
     }
 
-    public Parallelogramme(Point p1, Point p2, Point p3){
-        super(p1,p2,p3,new Point(p1.getX() + p3.getX() - p2.getX(), p1.getY() + p3.getY() - p2.getY()));
+    public Parallelogramme(InterPoint p1, InterPoint p2, InterPoint p3, InterPoint p4){
+        super();
+        this.updateFigure(p1, p2, p3, p4);
     }
 
     @Override
-    public void updateFigure(Point p1, Point p2, Point p3, Point p4) {
+    public void updateFigure(InterPoint p1, InterPoint p2, InterPoint p3, InterPoint p4) {
 
         double dist12 = Math.sqrt(Math.pow(p2.getX() - p1.getX(),2) + Math.pow(p2.getY() - p1.getY(),2));
         double dist23 = Math.sqrt(Math.pow(p3.getX() - p2.getX(),2) + Math.pow(p3.getY() - p2.getY(),2));
@@ -23,7 +24,7 @@ public class Parallelogramme extends Trapeze {
         double dist41 = Math.sqrt(Math.pow(p1.getX() - p4.getX(),2) + Math.pow(p1.getY() - p4.getY(),2));
 
         if(! (dist12 == dist34 && dist23 == dist41))
-            throw new IllegalArgumentException("Ces points ne permettent pas de faire un parallélogramme");
+            throw new IllegalArgumentException("Ces InterPoints ne permettent pas de faire un parallélogramme");
 
         super.updateFigure(p1, p2, p3, p4);
     }
@@ -36,10 +37,11 @@ public class Parallelogramme extends Trapeze {
     }
 
     public static void main(String[] args) {
-        Point p1 = new Point(0,0);
-        Point p2 = new Point(0,1);
-        Point p3 = new Point(1,0);
-        Parallelogramme r = new Parallelogramme(p1,p2,p3);
+        InterPoint p1 = new Point(0,0);
+        InterPoint p2 = new Point(0,1);
+        InterPoint p3 = new Point(1,1);
+        InterPoint p4 = new Point(1,0);
+        Parallelogramme r = new Parallelogramme(p1,p2,p3,p4);
         r.propriete();
     }
 }
