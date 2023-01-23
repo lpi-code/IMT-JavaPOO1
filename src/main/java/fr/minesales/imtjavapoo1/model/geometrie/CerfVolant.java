@@ -1,8 +1,6 @@
 package fr.minesales.imtjavapoo1.model.geometrie;
 
-import java.text.DecimalFormat;
 
-import static fr.minesales.imtjavapoo1.model.geometrie.Point.angle;
 import static java.lang.Math.pow;
 
 public class CerfVolant extends Quadrilatere {
@@ -12,7 +10,8 @@ public class CerfVolant extends Quadrilatere {
     }
 
     public CerfVolant(Point p1, Point p2, Point p3, Point p4) {
-        super(p1, p2, p3, p4);
+        super();
+        this.updateFigure(p1, p2, p3, p4);
     }
     @Override
     public void propriete() {
