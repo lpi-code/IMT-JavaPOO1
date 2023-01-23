@@ -23,16 +23,21 @@ public class Losange extends Parallelogramme{
         this.p4 = new Point(p1.getX() + p3.getX() - p1.getX(), p1.getY() + p3.getY() - p1.getY());
     }
 
+    public Losange(Point p1, Point p2, Point p3, Point p4) {
+        super();
+        this.updateFigure(p1, p2, p3, p4);
+    }
+
     @Override
     public void updateFigure(Point p1, Point p2, Point p3, Point p4){
 
-        double dist12 = Math.sqrt(Math.pow(p2.getX() - p1.getX(),2) + Math.pow(p2.getY() - p1.getY(),2));
-        double dist13 = Math.sqrt(Math.pow(p3.getX() - p1.getX(),2) + Math.pow(p3.getY() - p1.getY(),2));
-        double dist24 = Math.sqrt(Math.pow(p4.getX() - p2.getX(),2) + Math.pow(p4.getY() - p2.getY(),2));
-        double dist34 = Math.sqrt(Math.pow(p4.getX() - p3.getX(),2) + Math.pow(p4.getY() - p3.getY(),2));
-        if(!( dist12 == dist13 && dist13 == dist24 && dist24 == dist34))
-            throw new IllegalArgumentException("Ces points ne permettent pas de faire un losange");
-
+        double dist12 = p1.distance(p2);
+        double dist23 = p2.distance(p3);
+        double dist34 = p3.distance(p4);
+        double dist41 = p4.distance(p1);
+        if (!(dist12 == dist34 && dist23 == dist41)){
+            throw new IllegalArgumentException("The points do not form a losange");
+        }
         super.updateFigure(p1, p2, p3, p4);
     }
 
