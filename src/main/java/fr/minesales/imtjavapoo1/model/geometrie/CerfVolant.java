@@ -69,16 +69,15 @@ public class CerfVolant extends Quadrilatere {
 
 
     public static void main(String[] args) {
-        InterPoint p1 = FabriquePoint.create(-5,7, "Point");
-        InterPoint p2 = FabriquePoint.create(2,6, "Point");
-        InterPoint p3 = FabriquePoint.create(5,-3, "Point");
-        InterPoint p4 = FabriquePoint.create(-4,0, "Point");
+        InterPoint p1 = FabriquePoint.create(-5,7, "Point2");
+        InterPoint p2 = FabriquePoint.create(2,6, "Point2");
+        InterPoint p3 = FabriquePoint.create(5,-3, "Point2");
+        InterPoint p4 = FabriquePoint.create(-4,0, "Point2");
         CerfVolant r = new CerfVolant(p1,p2,p3,p4);
-
-        InterPoint p5 = FabriquePoint.create(0,0, "Point");
-        InterPoint p6 = FabriquePoint.create(0,1, "Point");
-        InterPoint p7 = FabriquePoint.create(10,0, "Point");
-        InterPoint p8 = FabriquePoint.create(1,2, "Point");
+        InterPoint p5 = FabriquePoint.create(0,0, "Point2");
+        InterPoint p6 = FabriquePoint.create(0,1, "Point2");
+        InterPoint p7 = FabriquePoint.create(10,0, "Point2");
+        InterPoint p8 = FabriquePoint.create(1,2, "Point2");
         // assert exception
         try {
             r.updateFigure(p5,p6,p7,p8);
