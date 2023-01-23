@@ -61,11 +61,11 @@ public class Trapeze extends Quadrilatere {
     }
 
     public static void main(String[] args) {
-        InterPoint p1 = new Point(0,0);
-        InterPoint p2 = new Point(0,1);
-        InterPoint p3 = new Point(1,1);
-        InterPoint p4 = new Point(1,0);
-        InterPoint p5 = new Point(100, 100);
+        InterPoint p1 = FabriquePoint.create(0,0, "Point");
+        InterPoint p2 = FabriquePoint.create(0,1, "Point");
+        InterPoint p3 = FabriquePoint.create(1,1, "Point");
+        InterPoint p4 = FabriquePoint.create(1,0, "Point");
+        InterPoint p5 = FabriquePoint.create(100, 100, "Point");
         Trapeze r = new Trapeze();
         try{
             r.updateFigure(p1, p2, p3, p5);
