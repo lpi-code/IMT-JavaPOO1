@@ -6,9 +6,9 @@ public class Losange extends Parallelogramme{
     public Losange( InterPoint p1, double longX, double longY){
         super();
         this.p1 = p1;
-        this.p2 = new Point(p1.getX() + longX, p1.getY());
-        this.p3 = new Point(p1.getX(), p1.getY() + longY);
-        this.p4 = new Point(p1.getX() + longX, p1.getY() + longY);
+        this.p2 = FabriquePoint.create(p1.getX() + longX, p1.getY(), "Point");
+        this.p3 = FabriquePoint.create(p1.getX(), p1.getY() + longY, "Point");
+        this.p4 = FabriquePoint.create(p1.getX() + longX, p1.getY() + longY, "Point");
     }
 
     public Losange(){
@@ -18,9 +18,9 @@ public class Losange extends Parallelogramme{
     public Losange(InterPoint p1, InterPoint p3){
         super();
         this.p1 = p1;
-        this.p2 = new Point(p1.getX() + p3.getX() - p1.getX(), p1.getY());
+        this.p2 = FabriquePoint.create(p1.getX() + p3.getX() - p1.getX(), p1.getY(), "Point");
         this.p3 = p3;
-        this.p4 = new Point(p1.getX() + p3.getX() - p1.getX(), p1.getY() + p3.getY() - p1.getY());
+        this.p4 = FabriquePoint.create(p1.getX() + p3.getX() - p1.getX(), p1.getY() + p3.getY() - p1.getY(), "Point");
     }
 
     public Losange(InterPoint p1, InterPoint p2, InterPoint p3, InterPoint p4) {
@@ -47,13 +47,13 @@ public class Losange extends Parallelogramme{
     }
 
     public static void main(String[] args) {
-        InterPoint p1 = new Point(0,0);
-        InterPoint p2 = new Point(0,1);
-        InterPoint p3 = new Point(1,0);
-        InterPoint p4 = new Point(1,1);
+        InterPoint p1 = FabriquePoint.create(0,0, "Point");
+        InterPoint p2 = FabriquePoint.create(0,1, "Point");
+        InterPoint p3 = FabriquePoint.create(1,0, "Point");
+        InterPoint p4 = FabriquePoint.create(1,1, "Point");
         Losange r = new Losange(p1,p4);
 
-        InterPoint p5 = new Point(10,100); // Obviously wont work
+        InterPoint p5 = FabriquePoint.create(10,100, "Point"); // Obviously wont work
         try{
             r.updateFigure(p1, p2, p3, p5);
             throw new AssertionError("Should have thrown an exception");

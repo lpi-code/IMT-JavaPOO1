@@ -23,10 +23,10 @@ public class Quadrilatere {
 
     public Quadrilatere() {
         super();
-        this.p1 = new Point();
-        this.p2 = new Point();
-        this.p3 = new Point();
-        this.p4 = new Point();
+        this.p1 = FabriquePoint.create(0,0, "Point");
+        this.p2 = FabriquePoint.create(0,0, "Point");
+        this.p3 = FabriquePoint.create(0,0, "Point");
+        this.p4 = FabriquePoint.create(0,0, "Point");
     }
 
     public InterPoint getP1() {
@@ -101,7 +101,7 @@ public class Quadrilatere {
 
     public static void main(String[] args) {
         Quadrilatere q = new Quadrilatere();
-        q.updateFigure(new Point(0, 0), new Point(0, 1), new Point(1, 1), new Point(1, 0));
+        q.updateFigure(FabriquePoint.create(0,1,"Point"), FabriquePoint.create(0, 1, "Point"), FabriquePoint.create(1, 1, "Point"), FabriquePoint.create(1, 0, "Point"));
         q.affiche();
         q.propriete();
     }
