@@ -19,34 +19,31 @@ public class DrawGeometryView {
 
         this.canvas = new Canvas(800,600);
         this.gc = this.canvas.getGraphicsContext2D();
-        this.drawGeometryToolBar();
+
 
         this.borderPane.setCenter(this.canvas);
-        this.borderPane.setTop(this.toolBar);
+
 
         this.gc.setFill(Color.BLUE);
         this.gc.fillRect(75,75,100,100);
     }
 
     public void drawGeometryToolBar() {
-        this.manageButton();
         this.toolBar.setBackground(new Background(new BackgroundFill(Color.rgb(150, 150, 150), CornerRadii.EMPTY, Insets.EMPTY)));
 
     }
 
-    private void manageButton(){
-        Button carre = new Button("Carre");
-        Button cerfVolant = new Button("Cerf Volant");
-        Button losange = new Button("Losange");
-        Button parallelogramme = new Button("Parallelogramme");
-        Button rectangle = new Button("Rectangle");
-        Button trapeze = new Button("Trapeze");
-        Button quadrilatere = new Button("Quadrilatere");
+    public void manageButton(Button carre, Button cerfVolant, Button losange, Button parallelogramme, Button rectangle, Button trapeze, Button quadrilatere) {
         this.toolBar = new ToolBar(carre, cerfVolant, losange, parallelogramme, rectangle, trapeze, quadrilatere);
+        this.drawGeometryToolBar();
+        this.borderPane.setTop(this.toolBar);
     }
 
     public BorderPane getBorderPane() {
         return this.borderPane;
     }
 
+    public ToolBar getToolBar() {
+        return this.toolBar;
+    }
 }
