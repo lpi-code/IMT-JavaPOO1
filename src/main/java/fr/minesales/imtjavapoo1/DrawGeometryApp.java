@@ -19,7 +19,7 @@ public class DrawGeometryApp extends Application {
 
         DrawGeometryView drawGeometryView = new DrawGeometryView();
 
-        root.getChildren().add(drawGeometryView.getCanvas());
+        root.getChildren().add(drawGeometryView.getBorderPane());
 
         stage.setTitle("Dessin de figure géométrique");
         stage.setScene(scene);
