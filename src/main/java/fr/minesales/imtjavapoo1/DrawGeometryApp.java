@@ -1,9 +1,13 @@
 package fr.minesales.imtjavapoo1;
 
+import fr.minesales.imtjavapoo1.view.geometrie.DrawGeometryView;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 
@@ -14,19 +18,12 @@ public class DrawGeometryApp extends Application {
     public void start(Stage stage) throws IOException {
 
 
-        Line line = new Line();
+        Group root = new Group();
+        Scene scene = new Scene(root, 1000, 800, Color.WHITE);
 
-        //Setting the properties to a line
-        line.setStartX(100.0);
-        line.setStartY(150.0);
-        line.setEndX(500.0);
-        line.setEndY(150.0);
+        DrawGeometryView drawGeometryView = new DrawGeometryView();
 
-        //Creating a Group
-        Group root = new Group(line);
-
-        //Creating a Scene
-        Scene scene = new Scene(root, 600, 300);
+        root.getChildren().add(drawGeometryView.getCanvas());
 
         stage.setTitle("Dessin de figure géométrique");
         stage.setScene(scene);
