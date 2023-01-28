@@ -11,7 +11,7 @@ public class DrawGeometryModel {
         this.quadCollection = new ArrayList<>();
         this.pointMode = "Point";
     }
-    private Quadrilatere FabriqueQuadrilatere(ArrayList<ArrayList<Double>> coordinates, String type){
+    private Quadrilatere FabriqueQuadrilatere(ArrayList<ArrayList<Double>> coordinates, String type, String color){
         ArrayList<InterPoint> points = new ArrayList<>();
         for (ArrayList<Double> coordinate : coordinates) {
             points.add(FabriquePoint.create(coordinate.get(0), coordinate.get(1), this.pointMode));
@@ -34,9 +34,9 @@ public class DrawGeometryModel {
         }
     }
 
-    public boolean tryCreateQuad(ArrayList<ArrayList<Double>> coordinates, String type){
+    public boolean tryCreateQuad(ArrayList<ArrayList<Double>> coordinates, String type, String color){
         try {
-            this.quadCollection.add(FabriqueQuadrilatere(coordinates, type));
+            this.quadCollection.add(FabriqueQuadrilatere(coordinates, type, color));
             return true;
         } catch (Exception e) {
             return false;

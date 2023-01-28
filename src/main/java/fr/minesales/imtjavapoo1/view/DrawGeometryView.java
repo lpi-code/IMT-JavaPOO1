@@ -1,6 +1,7 @@
 package fr.minesales.imtjavapoo1.view;
 
 import fr.minesales.imtjavapoo1.DrawGeometryApp;
+import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
@@ -34,8 +35,8 @@ public class DrawGeometryView {
         this.gc.setFill(Color.BLUE);
     }
 
-    public void DrawPolygon(ArrayList<ArrayList<Double>> points){
-        this.gc.setFill(Color.BLUE);
+    public void DrawPolygon(ArrayList<ArrayList<Double>> points, String color){
+        this.gc.setFill(Color.valueOf(color));
         this.gc.fillPolygon(
                 points.stream().mapToDouble(i -> i.get(0)).toArray(),
                 points.stream().mapToDouble(i -> i.get(1)).toArray(),
@@ -61,10 +62,14 @@ public class DrawGeometryView {
             this.popupVbox.getChildren().add(labels.get(i));
             this.popupVbox.getChildren().add(coordsText.get(i));
         }
+        ChoiceBox color = new ChoiceBox(FXCollections.observableArrayList("Vert", "Bleu", "Rouge", "Jaune", "Noir", "Gris", "Orange", "Rose", "Violet"));
+        color.setValue("Bleu");
+        this.popupVbox.getChildren().add(color);
         Button validButton = new Button("Valider");
         Label errorLabel = new Label();
         this.popupVbox.getChildren().add(validButton);
         this.popupVbox.getChildren().add(errorLabel);
+
         validButton.setOnAction(e -> {
             ArrayList<ArrayList<Double>> points = new ArrayList<>();
             for (int i = 0; i < 4; i++) {
@@ -77,7 +82,38 @@ public class DrawGeometryView {
                     return;
                 }
             }
-            if (!this.mainController.tryCreateQuad(points, message)){
+            String colorValue = color.getValue().toString();
+            // Traduction depuis francais vers anglais
+            switch (colorValue) {
+                case "Vert":
+                    colorValue = "Green";
+                    break;
+                case "Bleu":
+                    colorValue = "Blue";
+                    break;
+                case "Rouge":
+                    colorValue = "Red";
+                    break;
+                case "Jaune":
+                    colorValue = "Yellow";
+                    break;
+                case "Noir":
+                    colorValue = "Black";
+                    break;
+                case "Gris":
+                    colorValue = "Grey";
+                    break;
+                case "Orange":
+                    colorValue = "Orange";
+                    break;
+                case "Rose":
+                    colorValue = "Pink";
+                    break;
+                case "Violet":
+                    colorValue = "Purple";
+                    break;
+            }
+            if (!this.mainController.tryCreateQuad(points, message, colorValue)) {
 
                 errorLabel.setText("Les coordonées ne permettent pas de : " + message);
             } else {

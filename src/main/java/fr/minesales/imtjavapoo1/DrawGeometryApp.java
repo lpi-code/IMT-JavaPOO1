@@ -84,10 +84,9 @@ public class DrawGeometryApp extends Application {
         this.drawGeometryView.manageButton(carre, cerfVolant, losange, parallelogramme, rectangle, trapeze, quadrilatere);
     }
 
-    public boolean tryCreateQuad(ArrayList<ArrayList<Double>> coordinates, String type){
-        if (this.drawGeometryModel.tryCreateQuad(coordinates, type)){
-            this.drawGeometryView.DrawPolygon(coordinates);
-            System.out.println("Figure géométrique créée");
+    public boolean tryCreateQuad(ArrayList<ArrayList<Double>> coordinates, String type, String color){
+        if (this.drawGeometryModel.tryCreateQuad(coordinates, type, color)){
+            this.drawGeometryView.DrawPolygon(coordinates, color);
             return true;
         } else {
             return false;
