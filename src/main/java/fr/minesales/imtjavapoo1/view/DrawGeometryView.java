@@ -51,7 +51,7 @@ public class DrawGeometryView {
     }
 
     public void drawPopups(String message) {
-        this.popupVbox = new VBox(15);
+        this.popupVbox = new VBox(10);
         this.popupVbox.setAlignment(Pos.CENTER);
         this.popupVbox.getChildren().add(new Text("Nouveau " +  message));
         ArrayList<TextField> coordsText = new ArrayList<>();
@@ -59,6 +59,7 @@ public class DrawGeometryView {
         for (int i = 0; i < 4; i++) {
             labels.add(new Label("Coordonnées " + (i+1)));
             coordsText.add(new TextField());
+            coordsText.get(i).setMaxWidth(100);
             this.popupVbox.getChildren().add(labels.get(i));
             this.popupVbox.getChildren().add(coordsText.get(i));
         }
