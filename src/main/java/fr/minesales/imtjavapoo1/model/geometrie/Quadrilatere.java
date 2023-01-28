@@ -1,5 +1,7 @@
 package fr.minesales.imtjavapoo1.model.geometrie;
 
+import java.util.ArrayList;
+
 public class Quadrilatere {
     protected InterPoint p1;
     protected InterPoint p2;
@@ -97,6 +99,27 @@ public class Quadrilatere {
     public void propriete() {
         System.out.println("Je suis un quadrilatère\nJe possède 4 côtés et 4 InterPoints");
         System.out.println("Mes InterPoints this sont " + this.p1.toString() + " " + this.p2.toString() + " " + this.p3.toString() + " " + this.p4.toString());
+    }
+
+    public ArrayList<ArrayList<Double>> getCoordinates(){
+        return new ArrayList<ArrayList<Double>>(){{
+            add(new ArrayList<Double>(){{
+                add(p1.getX());
+                add(p1.getY());
+            }});
+            add(new ArrayList<Double>(){{
+                add(p2.getX());
+                add(p2.getY());
+            }});
+            add(new ArrayList<Double>(){{
+                add(p3.getX());
+                add(p3.getY());
+            }});
+            add(new ArrayList<Double>(){{
+                add(p4.getX());
+                add(p4.getY());
+            }});
+        }};
     }
 
     public static void main(String[] args) {

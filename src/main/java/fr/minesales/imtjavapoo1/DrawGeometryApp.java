@@ -1,5 +1,6 @@
 package fr.minesales.imtjavapoo1;
 
+import fr.minesales.imtjavapoo1.model.DrawGeometryModel;
 import fr.minesales.imtjavapoo1.view.DrawGeometryView;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
@@ -23,6 +24,7 @@ import java.util.Collection;
 
 public class DrawGeometryApp extends Application {
     private DrawGeometryView drawGeometryView;
+    private DrawGeometryModel drawGeometryModel;
     private Stage primaryStage;
     @Override
     public void start(Stage stage) throws IOException {
@@ -31,7 +33,16 @@ public class DrawGeometryApp extends Application {
         Group root = new Group();
         Scene scene = new Scene(root, 1000, 800, Color.WHITE);
         this.primaryStage = stage;
-        this.drawGeometryView = new DrawGeometryView();
+        this.drawGeometryView = new DrawGeometryView(this);
+        this.drawGeometryModel = new DrawGeometryModel();
+        /*this.drawGeometryView.DrawPolygon(
+                new ArrayList<>(Arrays.asList(
+                        new ArrayList<>(Arrays.asList(100.0, 100.0)),
+                        new ArrayList<>(Arrays.asList(200.0, 100.0)),
+                        new ArrayList<>(Arrays.asList(200.0, 200.0)),
+                        new ArrayList<>(Arrays.asList(100.0, 200.0))
+                ))
+        );*/
         this.manageButton();
 
         root.getChildren().add(this.drawGeometryView.getBorderPane());
@@ -71,5 +82,15 @@ public class DrawGeometryApp extends Application {
         }
 
         this.drawGeometryView.manageButton(carre, cerfVolant, losange, parallelogramme, rectangle, trapeze, quadrilatere);
+    }
+
+    public boolean tryCreateQuad(ArrayList<ArrayList<Double>> coordinates, String type){
+        if (this.drawGeometryModel.tryCreateQuad(coordinates, type)){
+            this.drawGeometryView.DrawPolygon(coordinates);
+            System.out.println("Figure géométrique créée");
+            return true;
+        } else {
+            return false;
+        }
     }
 }

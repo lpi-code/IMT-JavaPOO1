@@ -1,5 +1,6 @@
 package fr.minesales.imtjavapoo1.view;
 
+import fr.minesales.imtjavapoo1.DrawGeometryApp;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
@@ -9,24 +10,38 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class DrawGeometryView {
     private Canvas canvas;
     private GraphicsContext gc;
     private BorderPane borderPane;
     private ToolBar toolBar;
     private VBox popupVbox;
-    public DrawGeometryView() {
+
+    private DrawGeometryApp mainController;
+    public DrawGeometryView(DrawGeometryApp mainController) {
         this.borderPane = new BorderPane();
 
         this.canvas = new Canvas(800,600);
         this.gc = this.canvas.getGraphicsContext2D();
-
+        this.mainController = mainController;
 
         this.borderPane.setCenter(this.canvas);
 
 
         this.gc.setFill(Color.BLUE);
-        this.gc.fillRect(75,75,100,100);
+    }
+
+    public void DrawPolygon(ArrayList<ArrayList<Double>> points){
+        this.gc.setFill(Color.BLUE);
+        this.gc.fillPolygon(
+                points.stream().mapToDouble(i -> i.get(0)).toArray(),
+                points.stream().mapToDouble(i -> i.get(1)).toArray(),
+                points.size()
+        );
+
     }
 
     public void drawGeometryToolBar() {
@@ -38,17 +53,39 @@ public class DrawGeometryView {
         this.popupVbox = new VBox(15);
         this.popupVbox.setAlignment(Pos.CENTER);
         this.popupVbox.getChildren().add(new Text("Nouveau " +  message));
-        Label label1 = new Label("Coordonnées P1");
-        Label label2 = new Label("Coordonnées P2");
-        Label label3 = new Label("Coordonnées P3");
-        Label label4 = new Label("Coordonnées P4");
-        TextField coordP1 = new TextField ();
-        TextField coordP2 = new TextField ();
-        TextField coordP3 = new TextField ();
-        TextField coordP4 = new TextField ();
+        ArrayList<TextField> coordsText = new ArrayList<>();
+        ArrayList<Label> labels = new ArrayList<>();
+        for (int i = 0; i < 4; i++) {
+            labels.add(new Label("Coordonnées " + (i+1)));
+            coordsText.add(new TextField());
+            this.popupVbox.getChildren().add(labels.get(i));
+            this.popupVbox.getChildren().add(coordsText.get(i));
+        }
         Button validButton = new Button("Valider");
-        this.popupVbox.getChildren().addAll(label1, coordP1, label2, coordP2, label3, coordP3, label4, coordP4, validButton);
+        Label errorLabel = new Label();
+        this.popupVbox.getChildren().add(validButton);
+        this.popupVbox.getChildren().add(errorLabel);
+        validButton.setOnAction(e -> {
+            ArrayList<ArrayList<Double>> points = new ArrayList<>();
+            for (int i = 0; i < 4; i++) {
+                try {
+                    Double x = Double.parseDouble(coordsText.get(i).getText().split(",")[0]);
+                    Double y = Double.parseDouble(coordsText.get(i).getText().split(",")[1]);
+                    points.add(new ArrayList<>(Arrays.asList(x, y)));
+                } catch (Exception exception) {
+                    errorLabel.setText("Erreur de saisie");
+                    return;
+                }
+            }
+            if (!this.mainController.tryCreateQuad(points, message)){
 
+                errorLabel.setText("Les coordonées ne permettent pas de : " + message);
+            } else {
+                errorLabel.setText("");
+                //close popup
+                this.borderPane.getChildren().remove(this.popupVbox);
+            }
+        });
     }
 
     public void manageButton(Button carre, Button cerfVolant, Button losange, Button parallelogramme, Button rectangle, Button trapeze, Button quadrilatere) {
