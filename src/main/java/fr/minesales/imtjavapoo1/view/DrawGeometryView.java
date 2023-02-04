@@ -46,89 +46,34 @@ public class DrawGeometryView {
     }
 
     public void drawGeometryToolBar() {
-        this.toolBar.setBackground(new Background(new BackgroundFill(Color.rgb(150, 150, 150), CornerRadii.EMPTY, Insets.EMPTY)));
+        this.toolBar.setMinWidth(1000);
+        this.toolBar.setMinHeight(50);
+        this.toolBar.setBackground(new Background(new BackgroundFill(Color.rgb(8, 56, 8), CornerRadii.EMPTY, Insets.EMPTY)));
 
     }
 
-    public void drawPopups(String message) {
+    public void drawPopups(String message, Button validButton, Label errorLabel, ArrayList<Label> labels, ArrayList<TextField> coordsText, ChoiceBox<String> color) {
         this.popupVbox = new VBox(10);
         this.popupVbox.setAlignment(Pos.CENTER);
         this.popupVbox.getChildren().add(new Text("Nouveau " +  message));
-        ArrayList<TextField> coordsText = new ArrayList<>();
-        ArrayList<Label> labels = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
-            labels.add(new Label("Coordonnées " + (i+1)));
-            coordsText.add(new TextField());
-            coordsText.get(i).setMaxWidth(100);
             this.popupVbox.getChildren().add(labels.get(i));
             this.popupVbox.getChildren().add(coordsText.get(i));
         }
-        ChoiceBox color = new ChoiceBox(FXCollections.observableArrayList("Vert", "Bleu", "Rouge", "Jaune", "Noir", "Gris", "Orange", "Rose", "Violet"));
-        color.setValue("Bleu");
         this.popupVbox.getChildren().add(color);
-        Button validButton = new Button("Valider");
-        Label errorLabel = new Label();
         this.popupVbox.getChildren().add(validButton);
         this.popupVbox.getChildren().add(errorLabel);
 
-        validButton.setOnAction(e -> {
-            ArrayList<ArrayList<Double>> points = new ArrayList<>();
-            for (int i = 0; i < 4; i++) {
-                try {
-                    Double x = Double.parseDouble(coordsText.get(i).getText().split(",")[0]);
-                    Double y = Double.parseDouble(coordsText.get(i).getText().split(",")[1]);
-                    points.add(new ArrayList<>(Arrays.asList(x, y)));
-                } catch (Exception exception) {
-                    errorLabel.setText("Erreur de saisie");
-                    return;
-                }
-            }
-            String colorValue = color.getValue().toString();
-            // Traduction depuis francais vers anglais
-            switch (colorValue) {
-                case "Vert":
-                    colorValue = "Green";
-                    break;
-                case "Bleu":
-                    colorValue = "Blue";
-                    break;
-                case "Rouge":
-                    colorValue = "Red";
-                    break;
-                case "Jaune":
-                    colorValue = "Yellow";
-                    break;
-                case "Noir":
-                    colorValue = "Black";
-                    break;
-                case "Gris":
-                    colorValue = "Grey";
-                    break;
-                case "Orange":
-                    colorValue = "Orange";
-                    break;
-                case "Rose":
-                    colorValue = "Pink";
-                    break;
-                case "Violet":
-                    colorValue = "Purple";
-                    break;
-            }
-            if (!this.mainController.tryCreateQuad(points, message, colorValue)) {
-
-                errorLabel.setText("Les coordonées ne permettent pas de : " + message);
-            } else {
-                errorLabel.setText("");
-                //close popup
-                this.borderPane.getChildren().remove(this.popupVbox);
-            }
-        });
     }
 
     public void manageButton(Button carre, Button cerfVolant, Button losange, Button parallelogramme, Button rectangle, Button trapeze, Button quadrilatere) {
-        this.toolBar = new ToolBar(carre, cerfVolant, losange, parallelogramme, rectangle, trapeze, quadrilatere);
-        this.drawGeometryToolBar();
+        HBox buttonsContainer = new HBox(15);
+        buttonsContainer.setAlignment(Pos.CENTER);
+        buttonsContainer.setMinWidth(1000);
+        buttonsContainer.getChildren().addAll(carre, cerfVolant, losange, parallelogramme, rectangle, trapeze, quadrilatere);
+        this.toolBar = new ToolBar(buttonsContainer);
         this.borderPane.setTop(this.toolBar);
+        drawGeometryToolBar();
     }
 
     public BorderPane getBorderPane() {

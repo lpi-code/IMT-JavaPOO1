@@ -3,6 +3,7 @@ package fr.minesales.imtjavapoo1;
 import fr.minesales.imtjavapoo1.model.DrawGeometryModel;
 import fr.minesales.imtjavapoo1.view.DrawGeometryView;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -11,6 +12,9 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -26,6 +30,7 @@ public class DrawGeometryApp extends Application {
     private DrawGeometryView drawGeometryView;
     private DrawGeometryModel drawGeometryModel;
     private Stage primaryStage;
+    private Stage popupStage;
     @Override
     public void start(Stage stage) throws IOException {
 
@@ -35,14 +40,14 @@ public class DrawGeometryApp extends Application {
         this.primaryStage = stage;
         this.drawGeometryView = new DrawGeometryView(this);
         this.drawGeometryModel = new DrawGeometryModel();
-        /*this.drawGeometryView.DrawPolygon(
-                new ArrayList<>(Arrays.asList(
-                        new ArrayList<>(Arrays.asList(100.0, 100.0)),
-                        new ArrayList<>(Arrays.asList(200.0, 100.0)),
-                        new ArrayList<>(Arrays.asList(200.0, 200.0)),
-                        new ArrayList<>(Arrays.asList(100.0, 200.0))
-                ))
-        );*/
+//        this.drawGeometryView.DrawPolygon(
+//                new ArrayList<>(Arrays.asList(
+//                        new ArrayList<>(Arrays.asList(100.0, 100.0)),
+//                        new ArrayList<>(Arrays.asList(200.0, 100.0)),
+//                        new ArrayList<>(Arrays.asList(200.0, 200.0)),
+//                        new ArrayList<>(Arrays.asList(100.0, 200.0))
+//                )), "red"
+//        );
         this.manageButton();
 
         root.getChildren().add(this.drawGeometryView.getBorderPane());
@@ -68,22 +73,70 @@ public class DrawGeometryApp extends Application {
         ArrayList<Button> buttons = new ArrayList<>(Arrays.asList(carre, cerfVolant, losange, parallelogramme, rectangle, trapeze, quadrilatere));
 
         for ( Button button : buttons ) {
+            button.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #083808;");
             button.setOnAction((EventHandler) event -> {
-                final Stage dialog = new Stage();
-                dialog.setTitle("Créer un " + button.getText());
-                dialog.initModality(Modality.APPLICATION_MODAL);
-                dialog.initOwner(this.primaryStage);
-                this.drawGeometryView.drawPopups(button.getText());
+                this.popupStage = new Stage();
+                this.popupStage.setTitle("Créer un " + button.getText());
+                this.popupStage.initModality(Modality.APPLICATION_MODAL);
+                this.popupStage.initOwner(this.primaryStage);
+                this.manageGeometryFigureCreation(button.getText());
                 Scene dialogScene = new Scene(this.drawGeometryView.getPopupVbox(), 400, 400);
-                dialog.setScene(dialogScene);
-                dialog.show();
+                this.popupStage.setScene(dialogScene);
+                this.popupStage.show();
             });
 
         }
-
         this.drawGeometryView.manageButton(carre, cerfVolant, losange, parallelogramme, rectangle, trapeze, quadrilatere);
     }
 
+    public void manageGeometryFigureCreation(String buttonText){
+
+        ArrayList<TextField> coordsText = new ArrayList<>();
+        ArrayList<Label> labels = new ArrayList<>();
+        for (int i = 0; i < 4; i++) {
+            labels.add(new Label("Coordonnées " + (i+1)));
+            coordsText.add(new TextField());
+            coordsText.get(i).setMaxWidth(100);
+        }
+        ChoiceBox color = new ChoiceBox(FXCollections.observableArrayList("Vert", "Bleu", "Rouge", "Jaune", "Noir", "Gris", "Orange", "Rose", "Violet"));
+        color.setValue("Bleu");
+        Button validButton = new Button("Valider");
+        Label errorLabel = new Label();
+        validButton.setOnAction(e -> {
+            ArrayList<ArrayList<Double>> points = new ArrayList<>();
+            for (int i = 0; i < 4; i++) {
+                try {
+                    Double x = Double.parseDouble(coordsText.get(i).getText().split(",")[0]);
+                    Double y = Double.parseDouble(coordsText.get(i).getText().split(",")[1]);
+                    points.add(new ArrayList<>(Arrays.asList(x, y)));
+                } catch (Exception exception) {
+                    errorLabel.setText("Erreur de saisie");
+                    return;
+                }
+            }
+            // Traduction depuis francais vers anglais
+            String colorValue = switch (color.getValue().toString()) {
+                case "Vert" -> "Green";
+                case "Bleu" -> "Blue";
+                case "Rouge" -> "Red";
+                case "Jaune" -> "Yellow";
+                case "Noir" -> "Black";
+                case "Gris" -> "Grey";
+                case "Orange" -> "Orange";
+                case "Rose" -> "Pink";
+                case "Violet" -> "Purple";
+                default -> color.getValue().toString();
+
+            };
+            if (!this.tryCreateQuad(points, buttonText, colorValue)) {
+                errorLabel.setText("Les coordonées ne permettent pas de : " + buttonText);
+            } else {
+                errorLabel.setText("");
+                this.popupStage.close();
+            }
+        });
+        this.drawGeometryView.drawPopups(buttonText, validButton, errorLabel, labels, coordsText, color);
+    }
     public boolean tryCreateQuad(ArrayList<ArrayList<Double>> coordinates, String type, String color){
         if (this.drawGeometryModel.tryCreateQuad(coordinates, type, color)){
             this.drawGeometryView.DrawPolygon(coordinates, color);
