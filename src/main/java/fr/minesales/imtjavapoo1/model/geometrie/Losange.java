@@ -1,5 +1,9 @@
 package fr.minesales.imtjavapoo1.model.geometrie;
 
+/*
+ * This is the class for losange.
+ * Author: @Piernas Loïc, Jaubert Nicolas
+ */
 public class Losange extends Parallelogramme{
 
 

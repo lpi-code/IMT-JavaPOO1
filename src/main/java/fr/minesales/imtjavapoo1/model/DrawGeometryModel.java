@@ -4,6 +4,10 @@ import fr.minesales.imtjavapoo1.model.geometrie.*;
 
 import java.util.ArrayList;
 
+/*
+ * This is the main model class of the application.
+ * Author: @Piernas Loïc, Jaubert Nicolas
+ */
 public class DrawGeometryModel {
     private ArrayList<Quadrilatere> quadCollection;
     private String pointMode;

@@ -1,5 +1,9 @@
 package fr.minesales.imtjavapoo1.model.geometrie;
 
+/*
+ * This is the main class for square.
+ * Author: @Piernas Loïc, Jaubert Nicolas
+ */
 public class Carre extends Rectangle {
 
     public Carre() {

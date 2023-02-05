@@ -1,5 +1,9 @@
 package fr.minesales.imtjavapoo1.model.geometrie;
 
+/*
+ * This is the class for Point2.
+ * Author: @Piernas Loïc, Jaubert Nicolas
+ */
 public class Point2 implements InterPoint {
     private double r;
     private double theta;

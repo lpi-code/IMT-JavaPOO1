@@ -1,7 +1,6 @@
 package fr.minesales.imtjavapoo1.view;
 
-import fr.minesales.imtjavapoo1.DrawGeometryApp;
-import javafx.collections.FXCollections;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
@@ -9,12 +8,14 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
+/*
+ * This is the view of the application.
+ * Author: @Piernas Loïc, Jaubert Nicolas
+ */
 public class DrawGeometryView {
     private Canvas canvas;
     private GraphicsContext gc;

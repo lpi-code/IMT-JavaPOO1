@@ -1,6 +1,10 @@
 package fr.minesales.imtjavapoo1;
 
 import fr.minesales.imtjavapoo1.model.geometrie.*;
+/*
+ * This is the class for the question D.
+ * Author: @Piernas Loïc, Jaubert Nicolas
+ */
 public class TD1_QuestionDmain {
     public static void main(String[] args) {
         System.out.println("Création d'un quadrilatère quelconque");

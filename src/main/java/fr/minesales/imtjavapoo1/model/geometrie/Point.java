@@ -1,5 +1,9 @@
 package fr.minesales.imtjavapoo1.model.geometrie;
 
+/*
+ * This is the class for point.
+ * Author: @Piernas Loïc, Jaubert Nicolas
+ */
 public class Point implements InterPoint{
     private double x;
     private double y;

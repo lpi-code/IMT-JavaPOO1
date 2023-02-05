@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/*
+ * This is a class that test the creation of a collection of quadrilaterals.
+ * Author: @Piernas Loïc, Jaubert Nicolas
+ */
 public class CollectionQuadrilatere {
 
     private List<Quadrilatere> quadCollection;

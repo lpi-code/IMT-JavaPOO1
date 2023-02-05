@@ -3,6 +3,10 @@ package fr.minesales.imtjavapoo1.model.geometrie;
 
 import static java.lang.Math.pow;
 
+/*
+ * This is the class for kite.
+ * Author: @Piernas Loïc, Jaubert Nicolas
+ */
 public class CerfVolant extends Quadrilatere {
     @Override
     public String type() {

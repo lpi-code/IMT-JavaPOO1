@@ -2,6 +2,10 @@ package fr.minesales.imtjavapoo1.model.geometrie;
 
 import java.util.ArrayList;
 
+/*
+ * This is the class for quadrilateral.
+ * Author: @Piernas Loïc, Jaubert Nicolas
+ */
 public class Quadrilatere {
     protected InterPoint p1;
     protected InterPoint p2;

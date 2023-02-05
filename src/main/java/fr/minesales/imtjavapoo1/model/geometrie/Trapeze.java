@@ -1,5 +1,9 @@
 package fr.minesales.imtjavapoo1.model.geometrie;
 
+/*
+ * This is the class for trapeze.
+ * Author: @Piernas Loïc, Jaubert Nicolas
+ */
 public class Trapeze extends Quadrilatere {
 
 

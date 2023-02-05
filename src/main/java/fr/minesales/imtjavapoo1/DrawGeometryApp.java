@@ -4,28 +4,26 @@ import fr.minesales.imtjavapoo1.model.DrawGeometryModel;
 import fr.minesales.imtjavapoo1.view.DrawGeometryView;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 
+
+/*
+    * This is the main class of the application.
+    * Author: @Piernas Loïc, Jaubert Nicolas
+ */
 public class DrawGeometryApp extends Application {
     private DrawGeometryView drawGeometryView;
     private DrawGeometryModel drawGeometryModel;

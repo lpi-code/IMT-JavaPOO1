@@ -1,5 +1,9 @@
 package fr.minesales.imtjavapoo1.model.geometrie;
 
+/*
+ * This is the class for parallelogram.
+ * Author: @Piernas Loïc, Jaubert Nicolas
+ */
 public class Parallelogramme extends Trapeze {
 
     public Parallelogramme() {

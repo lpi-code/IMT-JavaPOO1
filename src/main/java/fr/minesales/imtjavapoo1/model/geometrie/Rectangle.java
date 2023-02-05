@@ -1,5 +1,9 @@
 package fr.minesales.imtjavapoo1.model.geometrie;
 
+/*
+ * This is the class for rectangle.
+ * Author: @Piernas Loïc, Jaubert Nicolas
+ */
 public class Rectangle extends Parallelogramme{
     public Rectangle( InterPoint p1, InterPoint p3){
         super();
