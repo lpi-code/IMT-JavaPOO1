@@ -38,16 +38,8 @@ public class DrawGeometryApp extends Application {
         Group root = new Group();
         Scene scene = new Scene(root, 1000, 800, Color.WHITE);
         this.primaryStage = stage;
-        this.drawGeometryView = new DrawGeometryView(this);
+        this.drawGeometryView = new DrawGeometryView(stage);
         this.drawGeometryModel = new DrawGeometryModel();
-//        this.drawGeometryView.DrawPolygon(
-//                new ArrayList<>(Arrays.asList(
-//                        new ArrayList<>(Arrays.asList(100.0, 100.0)),
-//                        new ArrayList<>(Arrays.asList(200.0, 100.0)),
-//                        new ArrayList<>(Arrays.asList(200.0, 200.0)),
-//                        new ArrayList<>(Arrays.asList(100.0, 200.0))
-//                )), "red"
-//        );
         this.manageButton();
 
         root.getChildren().add(this.drawGeometryView.getBorderPane());
@@ -73,9 +65,10 @@ public class DrawGeometryApp extends Application {
         ArrayList<Button> buttons = new ArrayList<>(Arrays.asList(carre, cerfVolant, losange, parallelogramme, rectangle, trapeze, quadrilatere));
 
         for ( Button button : buttons ) {
-            button.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #083808;");
+            button.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #2a49f9;");
             button.setOnAction((EventHandler) event -> {
                 this.popupStage = new Stage();
+                this.popupStage.setResizable(false);
                 this.popupStage.setTitle("Créer un " + button.getText());
                 this.popupStage.initModality(Modality.APPLICATION_MODAL);
                 this.popupStage.initOwner(this.primaryStage);
@@ -135,7 +128,7 @@ public class DrawGeometryApp extends Application {
                 this.popupStage.close();
             }
         });
-        this.drawGeometryView.drawPopups(buttonText, validButton, errorLabel, labels, coordsText, color);
+        this.drawGeometryView.drawPopups(validButton, errorLabel, labels, coordsText, color);
     }
     public boolean tryCreateQuad(ArrayList<ArrayList<Double>> coordinates, String type, String color){
         if (this.drawGeometryModel.tryCreateQuad(coordinates, type, color)){

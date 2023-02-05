@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,15 +20,15 @@ public class DrawGeometryView {
     private GraphicsContext gc;
     private BorderPane borderPane;
     private ToolBar toolBar;
+    private HBox buttonsContainer;
     private VBox popupVbox;
 
-    private DrawGeometryApp mainController;
-    public DrawGeometryView(DrawGeometryApp mainController) {
+    public DrawGeometryView(Stage stage) {
         this.borderPane = new BorderPane();
+        this.borderPane.prefWidthProperty().bind(stage.widthProperty());
 
-        this.canvas = new Canvas(800,600);
+        this.canvas = new Canvas(1000,600);
         this.gc = this.canvas.getGraphicsContext2D();
-        this.mainController = mainController;
 
         this.borderPane.setCenter(this.canvas);
 
@@ -46,20 +47,23 @@ public class DrawGeometryView {
     }
 
     public void drawGeometryToolBar() {
-        this.toolBar.setMinWidth(1000);
+        this.toolBar.prefWidthProperty().bind(this.borderPane.widthProperty());
         this.toolBar.setMinHeight(50);
-        this.toolBar.setBackground(new Background(new BackgroundFill(Color.rgb(8, 56, 8), CornerRadii.EMPTY, Insets.EMPTY)));
+        this.toolBar.setBackground(new Background(new BackgroundFill(Color.rgb(42, 73, 249), CornerRadii.EMPTY, Insets.EMPTY)));
 
     }
 
-    public void drawPopups(String message, Button validButton, Label errorLabel, ArrayList<Label> labels, ArrayList<TextField> coordsText, ChoiceBox<String> color) {
+    public void drawPopups(Button validButton, Label errorLabel, ArrayList<Label> labels, ArrayList<TextField> coordsText, ChoiceBox<String> color) {
         this.popupVbox = new VBox(10);
         this.popupVbox.setAlignment(Pos.CENTER);
-        this.popupVbox.getChildren().add(new Text("Nouveau " +  message));
         for (int i = 0; i < 4; i++) {
+            labels.get(i).setStyle("-fx-text-fill: #2a49f9");
             this.popupVbox.getChildren().add(labels.get(i));
             this.popupVbox.getChildren().add(coordsText.get(i));
         }
+        color.setStyle("-fx-background-color: white; -fx-mark-color: #2a49f9;");
+        validButton.setStyle("-fx-background-color: white; -fx-text-fill: #2a49f9;");
+        errorLabel.setStyle("-fx-text-fill: #2a49f9;");
         this.popupVbox.getChildren().add(color);
         this.popupVbox.getChildren().add(validButton);
         this.popupVbox.getChildren().add(errorLabel);
@@ -67,9 +71,9 @@ public class DrawGeometryView {
     }
 
     public void manageButton(Button carre, Button cerfVolant, Button losange, Button parallelogramme, Button rectangle, Button trapeze, Button quadrilatere) {
-        HBox buttonsContainer = new HBox(15);
+        this.buttonsContainer = new HBox(15);
+        this.buttonsContainer.minWidthProperty().bind(this.borderPane.widthProperty());
         buttonsContainer.setAlignment(Pos.CENTER);
-        buttonsContainer.setMinWidth(1000);
         buttonsContainer.getChildren().addAll(carre, cerfVolant, losange, parallelogramme, rectangle, trapeze, quadrilatere);
         this.toolBar = new ToolBar(buttonsContainer);
         this.borderPane.setTop(this.toolBar);
@@ -84,7 +88,4 @@ public class DrawGeometryView {
         return this.popupVbox;
     }
 
-    public ToolBar getToolBar() {
-        return this.toolBar;
-    }
 }
